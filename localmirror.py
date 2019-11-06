@@ -40,7 +40,7 @@ def download(url, base_dir):
 
 @click.command()
 @click.argument('packages', nargs=-1, required=True)
-@click.option('--channel', 'channels', default=DEFAULT_CHANNEL, metavar='<CHANNEL NAME>', multiple=True, help='Note: multiple --channel options is supported')
+@click.option('--channel', 'channels', default=DEFAULT_CHANNEL, metavar='<CHANNEL NAME>', multiple=True, help='Note: multiple --channel options are supported')
 @click.option('--platform', 'platform', default=DEFAULT_PLATFORM, type=click.Choice(DEFAULT_PLATFORMS), show_default=True)
 @click.option('--target-directory', 'target_dir', default='localmirror', metavar='<TARGET_DIR>', show_default=True)
 def localmirror(packages, channels=None, platform=None, target_dir=None):
