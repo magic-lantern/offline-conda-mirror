@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Custom stuff that is repo specific
+localmirror/
+*.ipynb
