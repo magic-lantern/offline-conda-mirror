@@ -45,6 +45,7 @@ If you want to download for offline installation PyTorch, you would run the foll
     ssl_verify: false
     ```
 1. `cd localmirror`
+1. `which python` # substitute your appropriate python including path in next line
 1. `sudo python ../https-server.py` # this is required so can listen on port 443 as expected
 1. `conda create -n mynewenv python=3.7`
 1. `conda activate mynewenv`
