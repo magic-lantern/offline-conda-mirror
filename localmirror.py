@@ -23,14 +23,14 @@ DEFAULT_PLATFORMS = ['linux-64',
 DEFAULT_PLATFORM = 'linux-64'
 DEFAULT_CHANNEL = ['defaults']
 
-def download(url, base_dir):
+def download(url, base_dir, overwite=False):
     u_path = Path('.'+ urlparse(url).path)
     p = u_path.parent
     f = u_path.name
     p = base_dir / p
     p.mkdir(parents=True, exist_ok=True)
     try:
-        if (not os.path.isfile(p / f)):
+        if (not os.path.isfile(p / f) or overwite):
             urllib.request.urlretrieve(url, p / f)
             print('Downloaded', url)
         else:
@@ -66,7 +66,8 @@ def localmirror(packages, channels=None, platform=None, target_dir=None):
             urls.append(channel_base + c + '/' + a + '/repodata.json')
 
     for u in urls:
-        download(u, base_dir)
+        # always want to make sure we have the most current repo/dependency information
+        download(u, base_dir, overwite=True)
 
     if 'defaults' not in channels:
         channels = list(channels)
