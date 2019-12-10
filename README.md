@@ -50,3 +50,23 @@ If you want to download for offline installation PyTorch, you would run the foll
 1. `conda create -n mynewenv python=3.7`
 1. `conda activate mynewenv`
 1. `conda install pytorch torchvision cudatoolkit=10.1 -c pytorch`
+
+# Notes about Offline `pip` Mirror
+
+Pip is much easier to use offline. It has a built in command for downloading a package and all dependencies. You can either run:
+
+`pip download somepackage`
+
+Or you can run:
+
+`pip download -r requirements.txt`
+
+By default the `download` command will save to the current directory without installing the packages. If you move the download folder to an offline machine, you can then install with:
+
+`pip install --no-index --find-links /path/to/pipfiles/ somepackage`
+
+Or:
+
+`pip install --no-index --find-links /path/to/pipfiles/ -r requirements.txt`
+
+based on https://stackoverflow.com/questions/11091623/python-packages-offline-installation#14447068
